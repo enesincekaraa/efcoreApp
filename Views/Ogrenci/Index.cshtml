@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Ogrenci>
+<h2>Öğrenci Listesi</h2>
+<a class="btn btn-primary" asp-controller="Ogrenci" asp-action="Create">Öğrenci Ekle</a>
+
+<hr />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width:150px;">@Html.DisplayNameFor(m => m.OgrenciId)</th>
+            <th>@Html.DisplayNameFor(m => m.OgrenciAd)</th>
+            <th>@Html.DisplayNameFor(m => m.OgrenciSoyAd)</th>
+            <th style="width:150px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+               <td>@Html.DisplayFor(modelItem => item.OgrenciId)</td>
+                <td>@Html.DisplayFor(modelItem => item.OgrenciAd)</td>
+                <td>@Html.DisplayFor(modelItem => item.OgrenciSoyAd)</td>
+               <td>
+                   <a asp-controller="Ogrenci" asp-action="Edit" asp-route-id="@item.OgrenciId" class="btn btn-sm btn-danger">Güncelle</a>
+                   <a asp-controller="Ogrenci" asp-action="Delete" asp-route-id="@item.OgrenciId" class="btn btn-sm btn-danger">Sil</a>
+               </td>
+            </tr>
+        }
+    </tbody>
+</table>
